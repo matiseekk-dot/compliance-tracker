@@ -38,16 +38,43 @@ const addDays = (n) => { const d = new Date(); d.setDate(d.getDate()+n); return 
 const thisYear = new Date().getFullYear();
 
 const INITIAL = [
-  { id:1, type:"regulatory", title:"Raport kwartalny AML — przekazanie do UKNF", regulator:"UKNF", source:"Art. 72 Ustawa AML", deadline:addDays(5), recurrence:"quarterly", status:"inprogress", starred:true, completedDate:null, notes:"Raport obejmuje Q1 2026. Podpis Zarządu wymagany." },
-  { id:2, type:"regulatory", title:"Aktualizacja oceny ryzyka instytucji", regulator:"EBA", source:"EBA/GL/2021/02", deadline:addDays(22), recurrence:"annual", status:"pending", starred:false, completedDate:null, notes:"Uwzględnić zmiany list FATF." },
-  { id:3, type:"internal",   title:"Przegląd matrycy ryzyka CRRM", regulator:"Wewnętrzne", source:"Polityka AML §12", deadline:addDays(14), recurrence:"annual", status:"pending", starred:true, completedDate:null, notes:"Zaktualizować progi punktowe wg uwag z audytu." },
-  { id:4, type:"adhoc",      title:"Opinia dot. nowego produktu — ocena ryzyka AML", regulator:"Wewnętrzne", source:"", deadline:addDays(3), recurrence:"none", status:"inprogress", starred:true, completedDate:null, notes:"Pilne — produkt wchodzi 15.04. Wymagana opinia compliance." },
-  { id:5, type:"adhoc",      title:"Analiza transakcji podejrzanej — klient #4872", regulator:"GIIF", source:"Art. 86 Ustawa AML", deadline:addDays(2), recurrence:"none", status:"inprogress", starred:false, completedDate:null, notes:"Sprawdzić powiązania z podmiotami na liście sankcyjnej." },
-  { id:6, type:"regulatory", title:"Wdrożenie wytycznych EBA/GL/2022/05 — CDD", regulator:"EBA", source:"EBA/GL/2022/05", deadline:addDays(40), recurrence:"none", status:"pending", starred:true, completedDate:null, notes:"Aktualizacja procedur CDD/EDD. Wymaga zatwierdzenia RN." },
-  { id:7, type:"internal",   title:"Coroczny przegląd Polityki AML — Zarząd", regulator:"Wewnętrzne", source:"Art. 50 Ustawa AML", deadline:addDays(55), recurrence:"annual", status:"pending", starred:false, completedDate:null, notes:"Uwzględnić nowelizację ustawy AML z Q4 2025." },
-  { id:8, type:"adhoc",      title:"Szkolenie nowych pracowników — wdrożenie AML", regulator:"Wewnętrzne", source:"Art. 52 Ustawa AML", deadline:addDays(-10), recurrence:"none", status:"done", starred:true, completedDate:`${thisYear}-03-15`, notes:"Przeprowadzone dla 5 osób z działu sprzedaży." },
-  { id:9, type:"regulatory", title:"Raport roczny AML — rok poprzedni", regulator:"UKNF", source:"Art. 73 Ustawa AML", deadline:addDays(-5), recurrence:"annual", status:"done", starred:true, completedDate:`${thisYear}-03-12`, notes:"Złożony terminowo. Potwierdzenie wpłynęło 12.03." },
-  { id:10, type:"adhoc",     title:"Opinia do umowy z dostawcą IT — klauzule AML", regulator:"Wewnętrzne", source:"", deadline:addDays(-30), recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-02-20`, notes:"Zaakceptowane przez Zarząd. Umowa podpisana." },
+  // ── W TRAKCIE ────────────────────────────────────────────────────
+  { id:1,  type:"internal",   title:"Połączenia komitetów CIRC KYC", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-04-14`, recurrence:"none", status:"pending", starred:false, completedDate:null, notes:"Przejrzeć regulamin CIRC." },
+  { id:2,  type:"regulatory", title:"EA przegląd wykonania ISS-5001189", regulator:"Wewnętrzne", source:"ISS-5001189", deadline:`${thisYear}-04-15`, recurrence:"none", status:"inprogress", starred:false, completedDate:null, notes:"Do zrobienia raport." },
+  { id:3,  type:"internal",   title:"Przegląd CRRM", regulator:"Wewnętrzne", source:"Art. 27 Ustawa AML / EBA/GL/2022/05", deadline:`${thisYear}-04-15`, recurrence:"annual", status:"inprogress", starred:true, completedDate:null, notes:"Poszedł mail do grupy." },
+  { id:4,  type:"internal",   title:"Scenariusze TM", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-04-15`, recurrence:"none", status:"pending", starred:false, completedDate:null, notes:"Do przejrzenia dokumenty." },
+  { id:5,  type:"internal",   title:"CTRLv2", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-04-16`, recurrence:"none", status:"inprogress", starred:true, completedDate:null, notes:"Czekam KYCO." },
+  { id:6,  type:"regulatory", title:"Weryfikacja kompletności i adekwatności kontroli AML/CFT w biurze maklerskim", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-04-30`, recurrence:"none", status:"pending", starred:false, completedDate:null, notes:"" },
+  { id:7,  type:"internal",   title:"Mapa wdrożenia w tematykę TM", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-04-30`, recurrence:"none", status:"pending", starred:false, completedDate:null, notes:"" },
+
+  // ── ZAKOŃCZONE ───────────────────────────────────────────────────
+  { id:8,  type:"internal",   title:"Uchylić procedury", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-01-31`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-01-31`, notes:"" },
+  { id:9,  type:"internal",   title:"Weryfikacja PCS 2.4 Grupowe", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-01-16`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-01-16`, notes:"" },
+  { id:10, type:"internal",   title:"Data Governance: Data Usage Agreement #DUA-1005 — Chief Data Officer approval / MBB RAS", regulator:"Wewnętrzne", source:"DUA-1005", deadline:`${thisYear}-01-31`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-01-31`, notes:"" },
+  { id:11, type:"internal",   title:"Operational Effectivess (OE) Report", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-01-31`, recurrence:"quarterly", status:"done", starred:false, completedDate:`${thisYear}-01-31`, notes:"" },
+  { id:12, type:"internal",   title:"Porządek w kontrolach Lease/Com-", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-01-31`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-01-31`, notes:"" },
+  { id:13, type:"internal",   title:"Plan KCM 2026 — prośba o weryfikację", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-02-02`, recurrence:"annual", status:"done", starred:false, completedDate:`${thisYear}-02-02`, notes:"" },
+  { id:14, type:"internal",   title:"CTRL 29.01 Komunikacja", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-01-29`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-01-29`, notes:"" },
+  { id:15, type:"internal",   title:"OE Assessment", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-02-06`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-02-06`, notes:"" },
+  { id:16, type:"internal",   title:"Kontrole PCS oraz kwartalne", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-02-02`, recurrence:"quarterly", status:"done", starred:false, completedDate:`${thisYear}-02-02`, notes:"" },
+  { id:17, type:"internal",   title:"Zapisać się dot. szkoleń Prince2 Foundation i Practitioner", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-01-31`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-01-31`, notes:"" },
+  { id:18, type:"internal",   title:"ISS-0003862 — rekomendacja oczekująca na zamknięcie", regulator:"Wewnętrzne", source:"ISS-0003862", deadline:`${thisYear}-01-31`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-01-31`, notes:"" },
+  { id:19, type:"internal",   title:"Napisać wnioski CIRC", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-02-13`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-02-13`, notes:"" },
+  { id:20, type:"internal",   title:"Fundacja rodzinne BM", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-02-13`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-02-13`, notes:"" },
+  { id:21, type:"internal",   title:"Kontrole w UdB", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-02-10`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-02-10`, notes:"" },
+  { id:22, type:"internal",   title:"Porządek w kontrolach Lease/Com- (luty)", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-02-28`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-02-28`, notes:"" },
+  { id:23, type:"internal",   title:"IRN-20059145", regulator:"Wewnętrzne", source:"IRN-20059145", deadline:`${thisYear}-02-28`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-02-28`, notes:"" },
+  { id:24, type:"internal",   title:"Zrobić mapowanie Ryzyka, Kontrole GS", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-02-20`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-02-20`, notes:"" },
+  { id:25, type:"internal",   title:"Nowy PCS RIA", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-03-31`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-03-31`, notes:"" },
+  { id:26, type:"internal",   title:"Kwartalny raport CIRC", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-03-13`, recurrence:"quarterly", status:"done", starred:true, completedDate:`${thisYear}-03-13`, notes:"" },
+  { id:27, type:"internal",   title:"Audyt WB Lending — obserwacja audytora", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-03-11`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-03-11`, notes:"" },
+  { id:28, type:"regulatory", title:"ISS-5000606 MIA Walidacja", regulator:"Wewnętrzne", source:"ISS-5000606", deadline:`${thisYear}-03-13`, recurrence:"none", status:"done", starred:true, completedDate:`${thisYear}-03-13`, notes:"" },
+  { id:29, type:"regulatory", title:"Do walidacji MIA Globalne", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-03-31`, recurrence:"none", status:"done", starred:true, completedDate:`${thisYear}-03-31`, notes:"" },
+  { id:30, type:"internal",   title:"Analiza celowości — uzupełnienie obszar backoffice HOC 1k", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-03-18`, recurrence:"none", status:"done", starred:false, completedDate:`${thisYear}-03-18`, notes:"" },
+  { id:31, type:"regulatory", title:"Opinia prawna dotycząca weryfikacji tożsamości", regulator:"Wewnętrzne", source:"", deadline:`${thisYear}-03-31`, recurrence:"none", status:"done", starred:true, completedDate:`${thisYear}-03-31`, notes:"" },
+  { id:32, type:"regulatory", title:"Szkolenie AML", regulator:"Wewnętrzne", source:"Art. 52 Ustawa AML", deadline:`${thisYear}-03-31`, recurrence:"annual", status:"done", starred:true, completedDate:`${thisYear}-03-31`, notes:"" },
+  { id:33, type:"regulatory", title:"BION", regulator:"UKNF", source:"", deadline:`${thisYear}-03-27`, recurrence:"annual", status:"done", starred:true, completedDate:`${thisYear}-03-27`, notes:"" },
+  { id:34, type:"regulatory", title:"Stanowisko KNF z dnia 19 marca 2026 dot. stosowania AML — analiza", regulator:"UKNF", source:"Stanowisko KNF 19.03.2026", deadline:`${thisYear}-03-31`, recurrence:"none", status:"done", starred:true, completedDate:`${thisYear}-03-31`, notes:"" },
 ];
 
 // ── HELPERS ──────────────────────────────────────────────────────
@@ -372,6 +399,259 @@ const generatePrintReport = (items, periodId) => {
   setTimeout(() => w.print(), 600);
 };
 
+// ── DANE STARTOWE — CELE ROCZNE ──────────────────────────────────
+const INITIAL_GOALS = [
+  {
+    id: 1,
+    title: "Zapewnię sprawną i zgodną ze strategią ESG realizację zadań BAU oraz będę skutecznie zarządzać wąskimi gardłami i ryzykami",
+    color: "#a78bfa",
+    subtasks: [
+      { id: 11, title: "Zadania BAU realizowane zgodnie z ustaloną normą jakości/czasu a ich wpływ na cele ESG świadomie uwzględniany", done: false, completedDate: null },
+      { id: 12, title: "Wąskie gardła i ryzyka identyfikowane i adresowane na bieżąco. Zagrożenia zgłaszane i eskalowane zgodnie ze standardem", done: false, completedDate: null },
+    ]
+  },
+  {
+    id: 2,
+    title: "Usprawnienia identyfikowane i wdrażane, z widoczną poprawą efektywności, jakości lub redukcją ryzyka — min. 2/rok",
+    color: "#38bdf8",
+    subtasks: [
+      { id: 21, title: "Usunięcie ODD PL_002", done: false, completedDate: null },
+      { id: 22, title: "Zmiana kontroli w spółkach zależnych co ma pozytywny wpływ na wynik Compliance", done: true, completedDate: `${thisYear}-02-01` },
+      { id: 23, title: "Zmniejszenie liczby wpływających wniosków na Komitet CIRC", done: true, completedDate: `${thisYear}-02-01` },
+      { id: 24, title: "Zmniejszenie liczby wpływających maili z prośbą o rekomendacje do zespołu FCC Operations", done: true, completedDate: `${thisYear}-03-26` },
+      { id: 25, title: "Backlog zarządzany zgodnie ze standardem (Azure). Zadania bez uzasadnienia (niezgodne z rolą/bez wartości dodanej/nieistotne z perspektywy ryzyka) eliminowane", done: false, completedDate: null },
+      { id: 26, title: "Przygotowanie i realizacja planu wdrożenia w obszar TM, zakończone samodzielnym i poprawnym wykonywaniem zadań w tym zakresie", done: false, completedDate: null },
+      { id: 27, title: "Spotkania FCC TM", done: false, completedDate: null },
+      { id: 28, title: "Analiza Global Set Function", done: false, completedDate: null },
+    ]
+  },
+  {
+    id: 3,
+    title: "W ramach projektu Golden, dostarczam na czas i w oczekiwanej jakości zadania, które zapewniające integrację Banku z Goldman Sachs TFI w obszarach dla których jestem SME",
+    color: "#fb923c",
+    subtasks: [
+      { id: 31, title: "Przygotowanie ryzyk i kontroli z obszarów FCC", done: true, completedDate: `${thisYear}-02-25` },
+    ]
+  },
+];
+
+// ── WIDOK CELÓW ROCZNYCH ─────────────────────────────────────────
+const GoalsView = ({ goals, setGoals }) => {
+  const [expandedGoal, setExpandedGoal] = useState(null);
+  const [addingTo, setAddingTo]         = useState(null);
+  const [newSubtask, setNewSubtask]     = useState("");
+  const [completingId, setCompletingId] = useState(null); // { goalId, subtaskId }
+  const [editingGoal, setEditingGoal]   = useState(null);
+  const [newGoalTitle, setNewGoalTitle] = useState("");
+  const [addingGoal, setAddingGoal]     = useState(false);
+
+  const saveGoals = (next) => {
+    setGoals(next);
+    try { localStorage.setItem("ct_goals", JSON.stringify(next)); } catch {}
+  };
+
+  const toggleSubtask = (goalId, subtaskId) => {
+    const goal = goals.find(g => g.id === goalId);
+    const sub  = goal?.subtasks.find(s => s.id === subtaskId);
+    if (!sub) return;
+    if (sub.done) {
+      // odznacz
+      saveGoals(goals.map(g => g.id !== goalId ? g : {
+        ...g, subtasks: g.subtasks.map(s => s.id !== subtaskId ? s : { ...s, done: false, completedDate: null })
+      }));
+    } else {
+      setCompletingId({ goalId, subtaskId });
+    }
+  };
+
+  const confirmSubDone = (date) => {
+    const { goalId, subtaskId } = completingId;
+    saveGoals(goals.map(g => g.id !== goalId ? g : {
+      ...g, subtasks: g.subtasks.map(s => s.id !== subtaskId ? s : { ...s, done: true, completedDate: date })
+    }));
+    setCompletingId(null);
+  };
+
+  const deleteSubtask = (goalId, subtaskId) => {
+    saveGoals(goals.map(g => g.id !== goalId ? g : {
+      ...g, subtasks: g.subtasks.filter(s => s.id !== subtaskId)
+    }));
+  };
+
+  const addSubtask = (goalId) => {
+    if (!newSubtask.trim()) return;
+    saveGoals(goals.map(g => g.id !== goalId ? g : {
+      ...g, subtasks: [...g.subtasks, { id: Date.now(), title: newSubtask.trim(), done: false, completedDate: null }]
+    }));
+    setNewSubtask("");
+    setAddingTo(null);
+  };
+
+  const deleteGoal = (goalId) => {
+    saveGoals(goals.filter(g => g.id !== goalId));
+  };
+
+  const addGoal = () => {
+    if (!newGoalTitle.trim()) return;
+    const colors = ["#a78bfa","#38bdf8","#fb923c","#10b981","#f59e0b","#ec4899"];
+    saveGoals([...goals, {
+      id: Date.now(),
+      title: newGoalTitle.trim(),
+      color: colors[goals.length % colors.length],
+      subtasks: []
+    }]);
+    setNewGoalTitle("");
+    setAddingGoal(false);
+  };
+
+  const exportGoalsExcel = () => {
+    const wb = XLSX.utils.book_new();
+    const rows = [];
+    goals.forEach(g => {
+      const done = g.subtasks.filter(s => s.done).length;
+      rows.push({ "Cel": g.title, "Podzadanie": "", "Status": `${done}/${g.subtasks.length}`, "Data realizacji": "" });
+      g.subtasks.forEach(s => {
+        rows.push({ "Cel": "", "Podzadanie": s.title, "Status": s.done ? "✓ Zakończone" : "W toku", "Data realizacji": s.completedDate || "" });
+      });
+      rows.push({ "Cel": "", "Podzadanie": "", "Status": "", "Data realizacji": "" });
+    });
+    const ws = XLSX.utils.json_to_sheet(rows);
+    ws["!cols"] = [{wch:60},{wch:60},{wch:16},{wch:16}];
+    XLSX.utils.book_append_sheet(wb, ws, "Cele roczne");
+    XLSX.writeFile(wb, `Cele_${thisYear}_${new Date().toISOString().split("T")[0]}.xlsx`);
+  };
+
+  return (
+    <div style={{padding:"8px 16px 140px",display:"flex",flexDirection:"column",gap:12}}>
+
+      {/* Pasek podsumowania */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6,marginBottom:4}}>
+        {[
+          { val: goals.length, label: "Cele", color: "#a78bfa" },
+          { val: goals.reduce((a,g)=>a+g.subtasks.length,0), label: "Podzadania", color: "#38bdf8" },
+          { val: goals.reduce((a,g)=>a+g.subtasks.filter(s=>s.done).length,0), label: "Zrobione ✓", color: "#10b981" },
+        ].map(({val,label,color})=>(
+          <div key={label} style={{background:"#0d1117",border:`1px solid ${color}33`,borderRadius:10,padding:"8px 6px",textAlign:"center"}}>
+            <div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:22,fontWeight:600,color,lineHeight:1}}>{val}</div>
+            <div style={{fontSize:9,color:"#475569",fontWeight:600,textTransform:"uppercase",letterSpacing:"0.06em",marginTop:3}}>{label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Lista celów */}
+      {goals.map(goal => {
+        const doneCount = goal.subtasks.filter(s => s.done).length;
+        const total     = goal.subtasks.length;
+        const pct       = total ? Math.round(doneCount / total * 100) : 0;
+        const expanded  = expandedGoal === goal.id;
+
+        return (
+          <div key={goal.id} className="card" style={{background:"#0d1117",border:`1px solid ${goal.color}33`,borderLeft:`3px solid ${goal.color}`,borderRadius:14,overflow:"hidden"}}>
+
+            {/* Nagłówek celu */}
+            <div style={{padding:"14px 14px 10px",cursor:"pointer"}} onClick={()=>setExpandedGoal(expanded ? null : goal.id)}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:8,marginBottom:8}}>
+                <div style={{fontSize:13,fontWeight:600,color:"#e2e8f0",lineHeight:1.45,flex:1}}>{goal.title}</div>
+                <div style={{display:"flex",gap:4,flexShrink:0}}>
+                  <button onClick={e=>{e.stopPropagation();deleteGoal(goal.id);}} style={{background:"none",border:"none",color:"#334155",fontSize:16,padding:"2px 4px",lineHeight:1}}>×</button>
+                  <span style={{fontSize:16,color:goal.color,transition:"transform 0.2s",display:"inline-block",transform:expanded?"rotate(180deg)":"rotate(0deg)"}}>▾</span>
+                </div>
+              </div>
+
+              {/* Progress bar */}
+              <div style={{display:"flex",alignItems:"center",gap:8}}>
+                <div style={{flex:1,height:5,background:"#1e2d3d",borderRadius:3,overflow:"hidden"}}>
+                  <div style={{height:"100%",width:`${pct}%`,background:goal.color,borderRadius:3,transition:"width 0.4s"}}/>
+                </div>
+                <span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:10,color:goal.color,fontWeight:700,whiteSpace:"nowrap"}}>
+                  {doneCount}/{total} · {pct}%
+                </span>
+              </div>
+            </div>
+
+            {/* Podzadania */}
+            {expanded && (
+              <div style={{borderTop:`1px solid ${goal.color}22`,padding:"8px 14px 12px",display:"flex",flexDirection:"column",gap:6}}>
+                {goal.subtasks.map(sub => (
+                  <div key={sub.id} style={{display:"flex",alignItems:"flex-start",gap:10,padding:"8px 10px",borderRadius:9,background:sub.done?"#061410":"#060b14",border:`1px solid ${sub.done?"#10b98122":"#1e2d3d"}`}}>
+                    <button onClick={()=>toggleSubtask(goal.id, sub.id)} style={{width:20,height:20,borderRadius:5,border:`2px solid ${sub.done?"#10b981":goal.color+"88"}`,background:sub.done?"#10b981":"transparent",flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",marginTop:1}}>
+                      {sub.done && <span style={{color:"white",fontSize:11,fontWeight:700}}>✓</span>}
+                    </button>
+                    <div style={{flex:1,minWidth:0}}>
+                      <div style={{fontSize:12,color:sub.done?"#475569":"#cbd5e1",textDecoration:sub.done?"line-through":"none",lineHeight:1.4}}>{sub.title}</div>
+                      {sub.done && sub.completedDate && (
+                        <div style={{fontSize:10,color:"#10b981",fontFamily:"'IBM Plex Mono', monospace",marginTop:3}}>✓ {fmtDate(sub.completedDate)}</div>
+                      )}
+                    </div>
+                    <button onClick={()=>deleteSubtask(goal.id, sub.id)} style={{background:"none",border:"none",color:"#1e2d3d",fontSize:14,flexShrink:0,padding:"0 2px"}}>×</button>
+                  </div>
+                ))}
+
+                {/* Dodaj podzadanie */}
+                {addingTo === goal.id ? (
+                  <div style={{display:"flex",gap:6,marginTop:4}}>
+                    <input
+                      autoFocus
+                      value={newSubtask}
+                      onChange={e=>setNewSubtask(e.target.value)}
+                      onKeyDown={e=>{ if(e.key==="Enter") addSubtask(goal.id); if(e.key==="Escape") { setAddingTo(null); setNewSubtask(""); } }}
+                      placeholder="Nowe podzadanie..."
+                      style={{...inputSt,flex:1,padding:"8px 12px",fontSize:13}}
+                    />
+                    <button onClick={()=>addSubtask(goal.id)} style={{background:`${goal.color}22`,border:`1px solid ${goal.color}55`,borderRadius:9,padding:"8px 12px",color:goal.color,fontWeight:700,fontSize:12}}>Dodaj</button>
+                    <button onClick={()=>{setAddingTo(null);setNewSubtask("");}} style={{background:"transparent",border:"1px solid #1e2d3d",borderRadius:9,padding:"8px 10px",color:"#475569",fontSize:12}}>✕</button>
+                  </div>
+                ) : (
+                  <button onClick={()=>setAddingTo(goal.id)} style={{marginTop:4,background:"transparent",border:`1px dashed ${goal.color}44`,borderRadius:9,padding:"7px 0",color:goal.color+"99",fontSize:12,fontWeight:600,width:"100%"}}>+ Dodaj podzadanie</button>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {/* Dodaj nowy cel */}
+      {addingGoal ? (
+        <div style={{background:"#0d1117",border:"1px solid #1e2d3d",borderRadius:14,padding:"14px"}}>
+          <div style={{fontSize:11,color:"#475569",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.1em",marginBottom:8}}>Nowy cel roczny</div>
+          <textarea
+            autoFocus
+            value={newGoalTitle}
+            onChange={e=>setNewGoalTitle(e.target.value)}
+            placeholder="Treść celu..."
+            rows={3}
+            style={{...inputSt,resize:"vertical",marginBottom:10}}
+          />
+          <div style={{display:"flex",gap:8}}>
+            <button onClick={()=>{setAddingGoal(false);setNewGoalTitle("");}} style={{flex:1,background:"transparent",border:"1px solid #1e2d3d",borderRadius:10,padding:"10px 0",color:"#475569",fontWeight:700,fontSize:13}}>Anuluj</button>
+            <button onClick={addGoal} style={{flex:2,background:"linear-gradient(135deg,#1e3a5f,#312e81)",border:"1px solid #2563eb55",borderRadius:10,padding:"10px 0",color:"#93c5fd",fontWeight:700,fontSize:13}}>Dodaj cel</button>
+          </div>
+        </div>
+      ) : (
+        <button onClick={()=>setAddingGoal(true)} style={{background:"transparent",border:"1px dashed #1e2d3d",borderRadius:14,padding:"14px 0",color:"#334155",fontSize:13,fontWeight:600}}>+ Nowy cel roczny</button>
+      )}
+
+      {/* Eksport */}
+      <button onClick={exportGoalsExcel} style={{background:"linear-gradient(135deg,#052e16,#065f46)",border:"1px solid #10b98144",borderRadius:12,padding:"11px 0",color:"#34d399",fontWeight:700,fontSize:13}}>⬇ Eksport celów do Excel</button>
+
+      {/* Modal — data zakończenia podzadania */}
+      {completingId && (
+        <div style={{position:"fixed",inset:0,zIndex:200,background:"rgba(0,0,0,0.9)",backdropFilter:"blur(8px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
+          <div style={{background:"#0d1117",border:"1px solid #1e2d3d",borderRadius:16,padding:"24px 20px",width:"100%",maxWidth:360}}>
+            <div style={{fontWeight:700,fontSize:16,marginBottom:6}}>Data realizacji</div>
+            <div style={{fontSize:12,color:"#475569",marginBottom:16}}>Kiedy zostało zrealizowane podzadanie?</div>
+            <input type="date" defaultValue={new Date().toISOString().split("T")[0]} id="subCompleteDate" style={{...inputSt,marginBottom:14}}/>
+            <div style={{display:"flex",gap:8}}>
+              <button onClick={()=>setCompletingId(null)} style={{flex:1,background:"transparent",border:"1px solid #1e2d3d",borderRadius:10,padding:"11px 0",color:"#475569",fontWeight:700,fontSize:13}}>Anuluj</button>
+              <button onClick={()=>confirmSubDone(document.getElementById("subCompleteDate").value)} style={{flex:2,background:"linear-gradient(135deg,#052e16,#065f46)",border:"1px solid #10b98144",borderRadius:10,padding:"11px 0",color:"#34d399",fontWeight:700,fontSize:13}}>✓ Zakończ</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 // ── KOMPONENTY ────────────────────────────────────────────────────
 const TypeBadge = ({typeId}) => {
   const t = getType(typeId);
@@ -469,7 +749,9 @@ const Field = ({label,children}) => (
 const EMPTY = { type:"adhoc", title:"", regulator:"Wewnętrzne", source:"", deadline:addDays(7), recurrence:"none", status:"pending", starred:false, completedDate:null, notes:"" };
 
 export default function ComplianceTracker() {
+  const [tab, setTab]           = useState("tasks"); // "tasks" | "goals"
   const [items, setItems]       = useState(()=>{ try{const s=localStorage.getItem("ct_v2");return s?JSON.parse(s):INITIAL;}catch{return INITIAL;}});
+  const [goals, setGoals]       = useState(()=>{ try{const s=localStorage.getItem("ct_goals");return s?JSON.parse(s):INITIAL_GOALS;}catch{return INITIAL_GOALS;}});
   const [modal, setModal]       = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [form, setForm]         = useState(EMPTY);
@@ -537,7 +819,7 @@ export default function ComplianceTracker() {
 
       {/* NAGŁÓWEK */}
       <div style={{position:"sticky",top:0,zIndex:50,background:"linear-gradient(180deg,#07090f 78%,transparent)",padding:"18px 16px 12px"}}>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
           <div style={{display:"flex",alignItems:"center",gap:10}}>
             <div style={{width:34,height:34,borderRadius:10,background:"linear-gradient(135deg,#1e3a5f,#312e81)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:17,border:"1px solid #2563eb44"}}>⚖️</div>
             <div>
@@ -545,11 +827,20 @@ export default function ComplianceTracker() {
               <div style={{fontSize:10,color:"#334155",fontFamily:"'IBM Plex Mono', monospace",letterSpacing:"0.05em"}}>AML · PERSONAL</div>
             </div>
           </div>
-          <button onClick={openAdd} style={{background:"linear-gradient(135deg,#1e3a5f,#312e81)",border:"1px solid #2563eb55",borderRadius:10,padding:"9px 14px",color:"#93c5fd",fontWeight:700,fontSize:13}}>+ Dodaj</button>
+          {tab === "tasks" && <button onClick={openAdd} style={{background:"linear-gradient(135deg,#1e3a5f,#312e81)",border:"1px solid #2563eb55",borderRadius:10,padding:"9px 14px",color:"#93c5fd",fontWeight:700,fontSize:13}}>+ Dodaj</button>}
         </div>
 
-        {/* Statystyki */}
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:6,marginBottom:14}}>
+        {/* Zakładki */}
+        <div style={{display:"flex",gap:5,marginBottom:14}}>
+          {[["tasks","📋 Zadania"],["goals","🎯 Cele roczne"]].map(([v,l])=>(
+            <button key={v} onClick={()=>setTab(v)} style={{flex:1,padding:"8px 0",borderRadius:10,fontSize:12,fontWeight:700,background:tab===v?"linear-gradient(135deg,#1e3a5f,#312e81)":"#0d1117",border:`1px solid ${tab===v?"#2563eb55":"#1e2d3d"}`,color:tab===v?"#93c5fd":"#475569"}}>{l}</button>
+          ))}
+        </div>
+
+        {/* Statystyki i filtry — tylko w zakładce zadań */}
+        {tab === "tasks" && (
+          <div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:6,marginBottom:14}}>
           {[
             {val:overdue, label:"Po term.", color:"#ef4444"},
             {val:urgent,  label:"Pilne",    color:"#ef4444"},
@@ -577,15 +868,22 @@ export default function ComplianceTracker() {
           ))}
           <span style={{marginLeft:"auto",fontSize:10,color:"#334155",fontFamily:"'IBM Plex Mono', monospace"}}>{filtered.length}</span>
         </div>
+          </div>
+        )}
       </div>
 
-      {/* LISTA */}
+      {/* ZAWARTOŚĆ ZAKŁADEK */}
+      {tab === "goals"
+        ? <GoalsView goals={goals} setGoals={setGoals} />
+        : (
       <div style={{padding:"8px 16px 160px",display:"flex",flexDirection:"column",gap:10}}>
         {overdueList.length>0&&<><div style={{fontSize:10,color:"#ef4444",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.12em",paddingTop:4}}>⚠ Przeterminowane</div>{overdueList.map(item=><Card key={item.id} item={item} onEdit={openEdit} onDelete={del} onStatus={onStatus} onStar={onStar} onComplete={onComplete}/>)}</>}
         {activeList.length>0&&<><div style={{fontSize:10,color:"#475569",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.12em",paddingTop:4}}>Nadchodzące</div>{activeList.map(item=><Card key={item.id} item={item} onEdit={openEdit} onDelete={del} onStatus={onStatus} onStar={onStar} onComplete={onComplete}/>)}</>}
         {filterSt!=="active"&&doneList.length>0&&<><div style={{fontSize:10,color:"#10b981",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.12em",paddingTop:4}}>✓ Zakończone</div>{doneList.map(item=><Card key={item.id} item={item} onEdit={openEdit} onDelete={del} onStatus={onStatus} onStar={onStar} onComplete={onComplete}/>)}</>}
         {filtered.length===0&&<div style={{textAlign:"center",padding:"56px 0",color:"#1e2d3d"}}><div style={{fontSize:36,marginBottom:12}}>✓</div><div style={{fontSize:13}}>Brak zadań</div></div>}
       </div>
+        )
+      }
 
       {/* DOLNY PASEK */}
       <div style={{position:"fixed",bottom:0,left:"50%",transform:"translateX(-50%)",width:"100%",maxWidth:520,background:"linear-gradient(180deg,transparent,#07090f 45%)",padding:"16px 16px 14px"}}>
